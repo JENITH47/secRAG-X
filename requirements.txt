@@ -1,0 +1,7 @@
+faiss-cpu
+flask
+neo4j
+numpy
+ollama
+python-docx
+requests

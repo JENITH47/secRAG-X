@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SecRAG-X — Interactive knowledge graph cybersecurity assistant" />
+  <title>SecRAG-X — Knowledge Graph Assistant</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- ═══ Compact Header ═══ -->
+  <header class="header-bar">
+    <div class="header-left">
+      <span class="logo-icon">◆</span>
+      <h1 class="logo-text">SecRAG-X</h1>
+      <span class="header-badge">Knowledge Graph</span>
+    </div>
+    <div class="header-metrics" id="header-metrics">
+      <span class="hm"><b id="hm-assets">—</b> Assets</span>
+      <span class="hm"><b id="hm-cves">—</b> CVEs</span>
+      <span class="hm"><b id="hm-weaknesses">—</b> CWEs</span>
+      <span class="hm"><b id="hm-attacks">—</b> Attacks</span>
+    </div>
+  </header>
+
+  <!-- ═══ Question Bar ═══ -->
+  <div class="question-bar">
+    <div class="example-chips" id="example-chips">
+      <button class="chip">why is SRV-032 risky</button>
+      <button class="chip">list top 5 most vulnerable assets</button>
+      <button class="chip">top 5 attacks dangerous for my system</button>
+      <button class="chip">is mysql causing issues</button>
+      <button class="chip">ddos vulnerable assets</button>
+      <button class="chip">is there an ongoing attack</button>
+    </div>
+    <form class="ask-form" id="ask-form">
+      <input type="text" class="ask-input" id="ask-input"
+             placeholder="Ask a security question — e.g. why is SRV-032 risky?" autocomplete="off" />
+      <button type="submit" class="ask-btn" id="ask-btn">
+        <span id="ask-btn-text">Ask ▶</span>
+      </button>
+    </form>
+  </div>
+
+  <!-- ═══ Main Split: Graph + Answer ═══ -->
+  <div class="main-split" id="main-split">
+
+    <!-- Graph Panel -->
+    <div class="graph-panel" id="graph-panel">
+      <div class="graph-toolbar">
+        <span class="graph-title" id="graph-title">Knowledge Graph</span>
+        <div class="graph-legend" id="graph-legend">
+          <span class="legend-dot" style="--c:#22d3ee;">Asset</span>
+          <span class="legend-dot" style="--c:#f59e0b;">CVE</span>
+          <span class="legend-dot" style="--c:#a78bfa;">CWE</span>
+          <span class="legend-dot" style="--c:#ef4444;">ATTACK</span>
+          <span class="legend-dot" style="--c:#3b82f6;">Software</span>
+          <span class="legend-dot" style="--c:#10b981;">Subnet</span>
+        </div>
+      </div>
+      <div class="graph-container" id="graph-container">
+        <div class="graph-placeholder" id="graph-placeholder">
+          <div class="graph-placeholder-icon">⬡</div>
+          <p>Ask a question to see the related knowledge graph</p>
+        </div>
+        <svg id="graph-svg"></svg>
+      </div>
+    </div>
+
+    <!-- Answer Panel -->
+    <div class="answer-panel" id="answer-panel">
+      <div class="answer-header">
+        <span>Answer</span>
+        <span class="answer-node-count" id="answer-node-count"></span>
+      </div>
+      <div class="answer-body" id="answer-body">
+        <div class="answer-empty">
+          Ask about risky assets, attack types, DDoS, phishing, malware, software risk, or a specific server like SRV-032.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ Dashboard Toggle ═══ -->
+  <button class="dashboard-toggle" id="dashboard-toggle">
+    📊 Show Dashboard Tables ▼
+  </button>
+
+  <!-- ═══ Dashboard (collapsed by default) ═══ -->
+  <div class="dashboard-section" id="dashboard-section" style="display:none;">
+    <nav class="tab-nav" id="tab-nav">
+      <button class="tab-btn active" data-tab="risk">📊 Risk Scoring</button>
+      <button class="tab-btn" data-tab="attack">⚡ Attack Exposure</button>
+      <button class="tab-btn" data-tab="asset">🔍 Asset Lookup</button>
+      <button class="tab-btn" data-tab="health">🩺 Data Health</button>
+    </nav>
+
+    <section class="tab-panel active" id="panel-risk">
+      <div class="glass-panel">
+        <div class="controls-row">
+          <label for="risk-slider">Assets:</label>
+          <input type="range" class="range-slider" id="risk-slider" min="5" max="20" step="5" value="10" />
+          <span class="range-value" id="risk-slider-val">10</span>
+        </div>
+        <div class="inline-metrics" id="risk-top-metrics"></div>
+        <div class="table-wrap" id="risk-table-wrap"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-attack">
+      <div class="glass-panel">
+        <div class="split">
+          <div>
+            <h3 class="split-title">Top Attack Categories</h3>
+            <div class="table-wrap" id="attack-categories-wrap"></div>
+          </div>
+          <div>
+            <h3 class="split-title">Most Exposed Assets</h3>
+            <div class="table-wrap" id="attack-exposure-wrap"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-asset">
+      <div class="glass-panel">
+        <form class="lookup-form" id="lookup-form">
+          <input type="text" class="lookup-input" id="lookup-input" value="SRV-032" placeholder="SRV-032" autocomplete="off" />
+          <button type="submit" class="lookup-btn">Search</button>
+        </form>
+        <div id="asset-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-health">
+      <div class="glass-panel">
+        <div id="health-sections"></div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<!-- Tooltip -->
+<div class="graph-tooltip" id="graph-tooltip"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

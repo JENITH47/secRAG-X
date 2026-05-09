@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Generated reports and render scratch
+_docx_render/
+_template_extract/
+_tmp/
+*.docx
+*.tex
+*.aux
+*.log
+*.out
+*.toc
+
+# Generated data and local indexes
+*.json
+*.pkl
+*.index
+test_output.txt
+project_prompt.md
+smvdu_logo.jpeg
+build_secragx_word_report.py
+
+# Local/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary 8-character extensionless scratch files generated during report work
+/[0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_]
