@@ -1,23 +1,80 @@
+# ============================================
+# SecRAG-X .gitignore
+# ============================================
+
 # Python
 __pycache__/
 *.py[cod]
+*$py.class
 *.pyo
 *.pyd
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
 # Virtual environments
 .venv/
 venv/
 env/
+ENV/
 
-# Local configuration
+# Testing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Environment variables (NEVER commit secrets)
 .env
 .env.*
 !.env.example
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Model files (too large for git)
+*.gguf
+*.bin
+*.safetensors
+
+# Generated data & local indexes
+*.pkl
+*.index
+vector.index
+metadata.pkl
+
+# Large JSON datasets (tracked via DVC or separate download)
+clean_cpe_dataset.json
+cleaned_cve.json
+clean_cve_final-*.json
+cleaned_cwe.json
+clean_techniques.json
+technique_with_tactics.json
+final_technique_data.json
+enterprise_assets.json
+network_sbom.json
 
 # Generated reports and render scratch
 _docx_render/
@@ -30,20 +87,14 @@ _tmp/
 *.out
 *.toc
 
-# Generated data and local indexes
-*.json
-*.pkl
-*.index
+# Build artifacts
 test_output.txt
 project_prompt.md
 smvdu_logo.jpeg
 build_secragx_word_report.py
 
-# Local/editor files
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# Jupyter
+.ipynb_checkpoints/
 
-# Temporary 8-character extensionless scratch files generated during report work
+# Temporary 8-character extensionless scratch files
 /[0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_][0-9a-z_]
