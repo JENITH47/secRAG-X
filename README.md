@@ -12,8 +12,7 @@
 ![Neo4j](https://img.shields.io/badge/Neo4j-Knowledge%20Graph-blue?style=for-the-badge&logo=neo4j)
 ![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-black?style=for-the-badge)
 ![FAISS](https://img.shields.io/badge/FAISS-Vector%20Search-orange?style=for-the-badge)
-![Institution](https://img.shields.io/badge/SMVDU-B.Tech%20Mini%20Project-purple?style=for-the-badge)
-![Semester](https://img.shields.io/badge/Semester-6th-blue?style=for-the-badge)
+
 
 [![Demo](https://img.shields.io/badge/▶%20Watch%20Demo-Video-red?style=for-the-badge)](#-demo)
 
