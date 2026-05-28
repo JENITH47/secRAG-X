@@ -291,7 +291,9 @@ python test_full_system.py
 **Jenith**
 
 [![GitHub](https://img.shields.io/badge/GitHub-JENITH47-181717?style=for-the-badge&logo=github)](https://github.com/JENITH47)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://https://www.linkedin.com/in/jenith-golyan/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](www.linkedin.com/in/jenith-golyan
+
+)
 
 ---
 
