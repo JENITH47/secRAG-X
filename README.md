@@ -4,12 +4,16 @@
 
 ### AI-powered cybersecurity reasoning with knowledge graphs, vector search, and local LLMs
 
+> SecRAG-X integrates enterprise assets, CVEs, CWEs, and MITRE ATT&CK techniques into a unified Neo4j Knowledge Graph, combined with FAISS vector search and Ollama LLMs for context-aware cybersecurity reasoning and risk assessment.
+
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
 ![Neo4j](https://img.shields.io/badge/Neo4j-Knowledge%20Graph-blue?style=for-the-badge&logo=neo4j)
 ![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-black?style=for-the-badge)
 ![FAISS](https://img.shields.io/badge/FAISS-Vector%20Search-orange?style=for-the-badge)
+![Institution](https://img.shields.io/badge/SMVDU-B.Tech%20Mini%20Project-purple?style=for-the-badge)
+![Semester](https://img.shields.io/badge/Semester-6th-blue?style=for-the-badge)
 
 [![Demo](https://img.shields.io/badge/▶%20Watch%20Demo-Video-red?style=for-the-badge)](#-demo)
 
@@ -46,6 +50,19 @@ graph TD
 
 ---
 
+## 🆚 Why SecRAG-X?
+
+| Feature | Traditional Tools | SecRAG-X |
+|---------|-------------------|----------|
+| Vulnerability Analysis | Isolated | Graph-based contextual |
+| Attack Mapping | Limited | Integrated MITRE ATT&CK |
+| Query Handling | Manual filtering | Natural language |
+| Semantic Retrieval | ❌ | FAISS-based |
+| AI Reasoning | ❌ | Ollama-powered |
+| Visualization | Basic dashboards | Interactive graph |
+
+---
+
 ## 🧰 Tech Stack
 
 <p align="center">
@@ -62,57 +79,52 @@ graph TD
 ---
 
 ## 📁 Project Structure
-
-```
 secRAG-X/
-├── 📁 static/                  → Browser dashboard (HTML/CSS/JS)
-├── 🖥️ server.py                → Flask API and graph endpoints
-├── 🧠 explane.py               → Main reasoning and intent engine
-├── 📥 data_ingest.py           → Neo4j ingestion pipeline
-├── 🏗️ build_knowledge.py       → FAISS knowledge base builder
-├── 🔍 vector_store.py          → Embedding and vector search helpers
-├── ⚙️ rag_engine.py            → Lightweight RAG wrapper
-├── 🗺️ mapping_engine.py        → Graph mapping utilities
-├── 🏢 asset.py                 → Mock enterprise asset generator
-├── 🌐 network_topology.py      → Mock topology/SBOM generator
-├── 🧪 test_*.py                → Validation and regression tests
-├── 📄 requirements.txt         → Python dependencies
-├── 🔒 .env.example             → Environment variable template
-└── 📜 LICENSE                  → MIT License
-```
+├── 📁 static/ → Browser dashboard (HTML/CSS/JS)
+├── 🖥️ server.py → Flask API and graph endpoints
+├── 🧠 explane.py → Main reasoning and intent engine
+├── 📥 data_ingest.py → Neo4j ingestion pipeline
+├── 🏗️ build_knowledge.py → FAISS knowledge base builder
+├── 🔍 vector_store.py → Embedding and vector search helpers
+├── ⚙️ rag_engine.py → Lightweight RAG wrapper
+├── 🗺️ mapping_engine.py → Graph mapping utilities
+├── 🏢 asset.py → Mock enterprise asset generator
+├── 🌐 network_topology.py → Mock topology/SBOM generator
+├── 🧪 test_*.py → Validation and regression tests
+├── 📄 requirements.txt → Python dependencies
+├── 🔒 .env.example → Environment variable template
+└── 📜 LICENSE → MIT License
 
 ---
 
 ## ⚡ Quick Start
 
-1️⃣ **Clone the repository**
+**Clone the repository**
 
 ```bash
 git clone https://github.com/JENITH47/secRAG-X.git
 cd secRAG-X
 ```
 
-2️⃣ **Install dependencies**
+**Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3️⃣ **Start Neo4j and configure credentials**
+**Start Neo4j and configure credentials**
 
 ```bash
-# Using Docker:
 docker run -d --name neo4j \
   -p 7474:7474 -p 7687:7687 \
   -e NEO4J_AUTH=neo4j/your_password_here \
   neo4j:latest
 
-# Then configure:
 cp .env.example .env
 # Edit .env with your Neo4j credentials
 ```
 
-4️⃣ **Pull Ollama models and build the knowledge graph**
+**Pull Ollama models and build the knowledge graph**
 
 ```bash
 ollama pull llama3
@@ -122,13 +134,13 @@ python data_ingest.py
 python build_knowledge.py
 ```
 
-5️⃣ **Launch the server**
+**Launch the server**
 
 ```bash
 python server.py
 ```
 
-Open [http://localhost:5000](http://localhost:5000) in your browser.
+Open http://localhost:5000 in your browser.
 
 ---
 
@@ -203,6 +215,18 @@ python test_full_system.py
 ```
 
 ---
+
+## 🔮 Future Scope
+
+- Real-time threat intelligence integration
+- Live intrusion detection support
+- Automated cybersecurity response mechanisms
+- Large-scale distributed deployment
+- Real-time network traffic analysis
+
+---
+
+
 
 ## 📝 Notes
 
