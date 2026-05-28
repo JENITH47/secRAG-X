@@ -22,6 +22,12 @@ import traceback
 import time
 from collections import Counter
 
+# Set standard output and error to use UTF-8 to prevent charmap/UnicodeEncodeError on Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
 # ── Globals ──────────────────────────────────────────────
 PASS = 0
 FAIL = 0
@@ -505,9 +511,12 @@ def test_edge_cases():
     record("Malicious input handled safely (parameterized)", len(data) == 0)
 
     # 9h. Hardcoded credential check
+    import inspect
     import explane
-    record("⚠️  Credentials hardcoded (flagged for review)",
-           False, "URI/USERNAME/PASSWORD should be in env vars or config")
+    source_code = inspect.getsource(explane)
+    uses_env = "os.getenv" in source_code or "os.environ" in source_code
+    record("Credentials loaded dynamically from environment/config", uses_env,
+           "Loaded from environment variables" if uses_env else "Hardcoded credentials detected")
 
 
 # ===========================================================

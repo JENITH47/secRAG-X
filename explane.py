@@ -16,9 +16,6 @@ VECTOR_INDEX, VECTOR_TEXTS = load_vector_db()
 def detect_intent(query):
     q = query.lower()
 
-    if is_unclear_input(q):
-        return "UNCLEAR_HELP"
-
     if any(x in q for x in [
         "tell me something random",
         "random fact",
@@ -36,6 +33,9 @@ def detect_intent(query):
         "homework",
     ]):
         return "OUT_OF_SCOPE_HELP"
+
+    if is_unclear_input(q):
+        return "UNCLEAR_HELP"
 
     if re.search(r"\bwhy\s+is\s+srv-\d+\s+risky\b", q):
         return "ASSET_DRILLDOWN"
@@ -2243,7 +2243,7 @@ Risk level:
 Review needed based on the current asset and vulnerability data.
 
 Confidence:
-{confidence} - based on available system data, not real-time monitoring.
+{confidence} - based on available system data, not real-time observation.
 
 What to do:
 Use trusted company apps and links only. Ask IT to prioritize patching and configuration review for this asset.

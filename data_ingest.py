@@ -421,7 +421,8 @@ with driver.session() as session:
     for a in assets:
         session.execute_write(insert_assets, a)
 
-    print("Skipping global Software to CVE links; asset-specific AFFECTED_BY links are used for reasoning.")
+    print("Linking top CVEs per software...")
+    session.execute_write(link_top_cves_per_software)
 
     print("Linking Assets to CVE with version-aware confidence...")
     session.execute_write(link_asset_cves_version_aware)
