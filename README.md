@@ -233,7 +233,7 @@ curl -X POST http://localhost:5000/api/ask \
 
 [![Watch Demo](https://img.shields.io/badge/▶%20Watch%20Full%20Demo-Walkthrough-red?style=for-the-badge&logo=youtube&logoColor=white)](https://drive.google.com/file/d/1vLTG0lMg6HAn1Js3o_MlLf30cL28yMXT/view?usp=sharing)
 
-*Demo video coming soon — watch the full system walkthrough.*
+
 
 </div>
 
