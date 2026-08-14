@@ -297,6 +297,11 @@ python test_full_system.py
 
 [![GitHub](https://img.shields.io/badge/GitHub-zzz-piyush?style=for-the-badge&logo=github)](https://github.com/zzz-piyush)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/piyush-kumar-linkdin-profile/)
+
+**Priyanshu Panwar**
+
+[![GitHub](https://img.shields.io/badge/GitHub-zzz-piyush?style=for-the-badge&logo=github)](https://github.com/PriyanshuPanwar66)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)]
 ---
 
 <div align="center">
